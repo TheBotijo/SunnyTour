@@ -26,16 +26,17 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: 6e12ca72d5ce51b43855a995c5d4b61a, type: 3}
-        m_Scale: {x: 0.021645023, y: 1.0526316}
-        m_Offset: {x: 0.19999999, y: 0.94}
+        m_Scale: {x: 20, y: 3}
+        m_Offset: {x: 1, y: 1}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 6e12ca72d5ce51b43855a995c5d4b61a, type: 3}
-        m_Scale: {x: 0.021645023, y: 1.0526316}
-        m_Offset: {x: 0.19999999, y: 0.94}
+        m_Scale: {x: 20, y: 3}
+        m_Offset: {x: 1, y: 1}
     m_Ints: []
     m_Floats:
     - _Glossiness: 0.6181818
-    - _Smoothness: 0.6181818
+    - _Metallic: 0.322
+    - _Smoothness: 0
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &5203809157741190768

@@ -15,6 +15,7 @@ public class TransitionManager : MonoBehaviour
     {
         fadeScreen.FadeOut();
         yield return new WaitForSeconds(fadeScreen.fadeDuration);
+        AudioManager.Instance.PlaySFX("Teletransport");
 
         //Abre la nueva escena
         SceneManager.LoadScene(sceneIndex);
