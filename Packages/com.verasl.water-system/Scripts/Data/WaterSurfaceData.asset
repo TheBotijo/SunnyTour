@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17284ebf5e80436eb6089f8c7459dab, type: 3}
   m_Name: WaterSurfaceData
   m_EditorClassIdentifier: 
-  _waterMaxVisibility: 116
+  _waterMaxVisibility: 169
   _absorptionRamp:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -24,9 +24,9 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 5397
-    ctime2: 16577
-    ctime3: 26792
+    ctime1: 13300
+    ctime2: 29298
+    ctime3: 48380
     ctime4: 65535
     ctime5: 0
     ctime6: 0
@@ -54,8 +54,8 @@ MonoBehaviour:
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 3277
-    ctime2: 24672
+    ctime1: 4241
+    ctime2: 25058
     ctime3: 52043
     ctime4: 63029
     ctime5: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_ColorSpace: -1
+    m_ColorSpace: 0
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   _waves:
@@ -117,14 +117,14 @@ MonoBehaviour:
       y: 0
     onmiDir: 0
   _customWaves: 0
-  randomSeed: 891
+  randomSeed: 41483
   _basicWaveSettings:
-    numWaves: 8
-    amplitude: 0.9
-    direction: -176
+    numWaves: 4
+    amplitude: 0.5
+    direction: -101
     wavelength: 14.7
   _foamSettings:
-    foamType: 0
+    foamType: 2
     basicFoam:
       serializedVersion: 2
       m_Curve:
@@ -213,8 +213,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.7
-        value: 1
+        time: 0.6916687
+        value: 0.83018875
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -246,8 +246,8 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1
-        value: 1
+        time: 0.9958191
+        value: 0.99056625
         inSlope: 0
         outSlope: 0
         tangentMode: 0

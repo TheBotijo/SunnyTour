@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FadeScreen : MonoBehaviour
 {
+    private MeshRenderer meshRenderer;
     public bool fadeOnStart = true;
     public float fadeDuration = 2;
     public Color fadeColor;
@@ -11,17 +12,21 @@ public class FadeScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        meshRenderer = GetComponent<MeshRenderer>();
         rend = GetComponent<Renderer>();
         if (fadeOnStart)
         {
             FadeIn();
+            StartCoroutine(DelayedAction());
         }
     }
 
     // Update is called once per frame
     public void Fade(float alphaIn, float alphaOut)
     {
+        meshRenderer.enabled = true;
         StartCoroutine(FadeRoutine(alphaIn, alphaOut));
+        StartCoroutine(DelayedAction());
         
     }
 
@@ -51,5 +56,10 @@ public class FadeScreen : MonoBehaviour
         Color newColor2 = fadeColor;
         newColor2.a = alphaOut;
         rend.material.SetColor("_Color", newColor2);
+    }
+    IEnumerator DelayedAction()
+    {
+        yield return new WaitForSeconds(2f);
+        meshRenderer.enabled = false;
     }
 }
