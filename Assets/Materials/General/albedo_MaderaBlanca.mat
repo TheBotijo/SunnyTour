@@ -40,7 +40,7 @@ Material:
     m_TexEnvs:
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: c5d942a6ab0f0574ca33620848150cf7, type: 3}
-        m_Scale: {x: 0.061349697, y: 0.029761909}
+        m_Scale: {x: 0.25, y: -1.06}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 27a8c191d0147a041972f7b7c91110a5, type: 3}
@@ -48,16 +48,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: c5d942a6ab0f0574ca33620848150cf7, type: 3}
-        m_Scale: {x: 0.061349697, y: 0.029761909}
+        m_Scale: {x: 0.25, y: -1.06}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BumpScale: 0.5
     - _Cull: 0
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _Glossiness: 0.5
-    - _Metallic: 0.015
-    - _Smoothness: 0
+    - _Metallic: 0.067
+    - _Smoothness: 0.136
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

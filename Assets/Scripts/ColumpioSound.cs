@@ -14,6 +14,7 @@ public class ColumpioSound : MonoBehaviour
     {
         lastPosition = transform.position;
         lastRotation = transform.rotation;
+        
     }
 
     void Update()
