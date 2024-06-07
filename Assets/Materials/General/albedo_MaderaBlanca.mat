@@ -25,7 +25,9 @@ Material:
   m_Parent: {fileID: 2100000, guid: be3ce07f93f316e488daa4f309132fb2, type: 2}
   m_ModifiedSerializedProperties: 24
   m_ValidKeywords:
+  - _METALLICSPECGLOSSMAP
   - _NORMALMAP
+  - _OCCLUSIONMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -50,15 +52,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: c5d942a6ab0f0574ca33620848150cf7, type: 3}
         m_Scale: {x: 0.25, y: -1.06}
         m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: 12c1ec43e64927d499a01e845f2f5772, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 2800000, guid: 6091d435331e4db40ab857ec867b7996, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BumpScale: 0.5
+    - _BumpScale: 0.2
     - _Cull: 0
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _Glossiness: 0.5
-    - _Metallic: 0.067
-    - _Smoothness: 0.136
+    - _Metallic: 0.139
+    - _OcclusionStrength: 1
+    - _Smoothness: 0.284
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

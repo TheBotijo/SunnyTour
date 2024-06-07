@@ -13,5 +13,6 @@ public class ButtonHandler : MonoBehaviour
     public void OnExitButtonPressed()
     {
         Application.Quit();
+        StopAllCoroutines();
     }
 }

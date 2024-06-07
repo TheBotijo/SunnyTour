@@ -6,7 +6,7 @@ public class FadeScreen : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     public bool fadeOnStart = true;
-    public float fadeDuration = 2;
+    public float fadeDuration = 3;
     public Color fadeColor;
     private Renderer rend;
     // Start is called before the first frame update
@@ -59,7 +59,7 @@ public class FadeScreen : MonoBehaviour
     }
     IEnumerator DelayedAction()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         meshRenderer.enabled = false;
     }
 }

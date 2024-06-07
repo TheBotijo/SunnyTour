@@ -37,3 +37,9 @@ MonoBehaviour:
     - stateName: focused
       stateEntered: {fileID: 0}
       stateExited: {fileID: 0}
+    - stateName: ImpactWood
+      stateEntered: {fileID: 8300000, guid: 250b0f09ea13e9e49abf2c8f9d5b1c02, type: 3}
+      stateExited: {fileID: 0}
+    - stateName: ImpactMetal
+      stateEntered: {fileID: 8300000, guid: a3a9ef089bd05eb47a8151637300c18f, type: 3}
+      stateExited: {fileID: 0}
