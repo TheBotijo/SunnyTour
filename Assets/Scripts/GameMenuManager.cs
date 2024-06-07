@@ -9,10 +9,24 @@ public class GameMenuManager : MonoBehaviour
     public GameObject options;
     public GameObject info;
     public InputActionProperty showButton;
+    public static GameMenuManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
-        // Inicializa el menú y sus opciones
+        // Inicializa el menï¿½ y sus opciones
         menu.SetActive(false);
         options.SetActive(false);
         info.SetActive(false);
@@ -22,7 +36,7 @@ public class GameMenuManager : MonoBehaviour
 
     void Update()
     {
-        // Asigna la referencia a la cabeza si no está asignada
+        // Asigna la referencia a la cabeza si no estï¿½ asignada
         if (head == null)
         {
             AssignHead();
@@ -30,18 +44,18 @@ public class GameMenuManager : MonoBehaviour
 
         if (showButton.action.WasPressedThisFrame())
         {
-            // Alternar la visibilidad del menú
+            // Alternar la visibilidad del menï¿½
             menu.SetActive(!menu.activeSelf);
             options.SetActive(false);
             info.SetActive(false);
 
-            // Posicionar el menú frente a la cabeza del jugador
+            // Posicionar el menï¿½ frente a la cabeza del jugador
             menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
             options.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
             info.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         }
 
-        // Asegurar que el menú mira al jugador
+        // Asegurar que el menï¿½ mira al jugador
         menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
         menu.transform.forward *= -1;
         options.transform.LookAt(new Vector3(head.position.x, options.transform.position.y, head.position.z));
@@ -53,13 +67,13 @@ public class GameMenuManager : MonoBehaviour
     private void AssignHead()
     {
         // Encuentra el objeto del jugador y asigna la referencia a la cabeza
-        GameObject player = GameObject.FindWithTag("Player"); // Asegúrate de que el jugador tiene la etiqueta "Player"
+        GameObject player = GameObject.FindWithTag("Player"); // Asegï¿½rate de que el jugador tiene la etiqueta "Player"
         if (player != null)
         {
-            head = player.transform.Find("Head"); // Cambia "Head" por el nombre exacto del objeto en la jerarquía del jugador
+            head = player.transform.Find("Head"); // Cambia "Head" por el nombre exacto del objeto en la jerarquï¿½a del jugador
             if (head == null)
             {
-                Debug.LogError("No se encontró 'Head' en el jugador.");
+                Debug.LogError("No se encontrï¿½ 'Head' en el jugador.");
             }
         }
         else
