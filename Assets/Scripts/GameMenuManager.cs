@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +11,16 @@ public class GameMenuManager : MonoBehaviour
     public GameObject info;
     public InputActionProperty showButton;
     public static GameMenuManager Instance;
+    public GameObject Head;
 
     private void Awake()
     {
+        // Añade `FadeScreen` si no existe
+        if (Head != null && Head.GetComponent<FadeScreen>() == null)
+        {
+            Head.AddComponent<FadeScreen>();
+        }
+
         if (Instance == null)
         {
             Instance = this;

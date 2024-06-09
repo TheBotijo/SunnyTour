@@ -1,10 +1,30 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneInit : MonoBehaviour
 {
     public GameObject Player; // Prefab del jugador que se instancia en la nueva escena
 
-    private void Awake()
+    void OnEnable()
+    {
+        // Register the callback to be called when a scene is loaded
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // Unregister the callback when the script is disabled
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Code to execute when a scene is loaded
+        Debug.Log("Scene loaded: " + scene.name);
+        // Call your custom method or script here
+        Spawn();
+    }
+    public void Spawn()
     {
         // Encuentra el objeto de punto de spawn en la escena
         GameObject spawnPoint = GameObject.Find("SpawnPoint");
@@ -25,17 +45,11 @@ public class SceneInit : MonoBehaviour
             spawnRotation = Quaternion.identity;
         }
 
-        // Instancia el jugador solo si no existe ya
-        if (PlayerController.Instance == null)
-        {
-            Instantiate(Player, spawnPosition, spawnRotation);
-        }
-        else
-        {
+        
             // Si ya existe una instancia del jugador, aseg�rate de actualizar su posici�n o propiedades si es necesario
             PlayerController.Instance.transform.position = spawnPosition;
             PlayerController.Instance.transform.rotation = spawnRotation;
-        }
+        
     }
 }
 

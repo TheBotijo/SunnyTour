@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
-    public static TransitionManager Instance { get; private set; }
+    public static TransitionManager Instance;
     public FadeScreen fadeScreen; // Puede estar vacío inicialmente
+    public AudioManager audioManager;
 
     private void Awake()
     {
@@ -69,6 +70,14 @@ public class TransitionManager : MonoBehaviour
 
         // Abre la nueva escena
         SceneManager.LoadScene(sceneIndex);
+        if (sceneIndex >= 1)
+        {
+            audioManager.PlayMusic("MainGuitar");
+        }
+        if (sceneIndex == 2)
+        {
+            audioManager.PlayMusic("MainPiano");
+        }
     }
 
     public void GotoSceneAsync(int sceneIndex)

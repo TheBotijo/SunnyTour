@@ -19,4 +19,5 @@ public class ChangeVFX : MonoBehaviour
                     VFX.enabled = true;
                 }
    }
+
 }
