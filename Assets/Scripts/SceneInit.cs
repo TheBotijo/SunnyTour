@@ -3,54 +3,58 @@ using UnityEngine.SceneManagement;
 
 public class SceneInit : MonoBehaviour
 {
-    public GameObject Player; // Prefab del jugador que se instancia en la nueva escena
+    public GameObject playerPrefab; // Prefab del jugador que se instancia en la nueva escena
+    private GameObject playerInstance; // Referencia al objeto del jugador en la escena
+    private GameObject spawnPoint;
 
+    private void Start()
+    {
+        playerInstance = GameObject.FindGameObjectWithTag("Player");
+    }
     void OnEnable()
     {
-        // Register the callback to be called when a scene is loaded
+        // Registrar el callback para ser llamado cuando se carga una escena
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
-        // Unregister the callback when the script is disabled
+        // Desregistrar el callback cuando el script se deshabilita
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Code to execute when a scene is loaded
-        Debug.Log("Scene loaded: " + scene.name);
-        // Call your custom method or script here
+        // Código para ejecutar cuando se carga una escena
+        Debug.Log("Escena cargada: " + scene.name);
+        // Llama a tu método personalizado o script aquí
         Spawn();
     }
+
     public void Spawn()
     {
         // Encuentra el objeto de punto de spawn en la escena
-        GameObject spawnPoint = GameObject.Find("SpawnPoint");
-        Vector3 spawnPosition;
-        Quaternion spawnRotation;
+        spawnPoint = GameObject.Find("SpawnPoint");
 
         if (spawnPoint != null)
         {
-            // Usa la posici�n y rotaci�n del punto de spawn
-            spawnPosition = spawnPoint.transform.position;
-            spawnRotation = spawnPoint.transform.rotation;
-        }
-        else
-        {
-            // Fallback a una posici�n y rotaci�n predeterminadas si no se encuentra el SpawnPoint
-            Debug.LogWarning("No se encontr� 'SpawnPoint', usando posici�n predeterminada.");
-            spawnPosition = Vector3.zero;
-            spawnRotation = Quaternion.identity;
-        }
+            Debug.Log("SpawnPoint encontrado en la escena: " + spawnPoint.name);
 
-        
-            // Si ya existe una instancia del jugador, aseg�rate de actualizar su posici�n o propiedades si es necesario
-            PlayerController.Instance.transform.position = spawnPosition;
-            PlayerController.Instance.transform.rotation = spawnRotation;
-        
+            Vector3 spawnPosition = spawnPoint.transform.position;
+            Quaternion spawnRotation = spawnPoint.transform.rotation;
+            playerInstance.transform.position = spawnPosition;
+            playerInstance.transform.rotation = spawnRotation;
+            // Intentar encontrar el objeto del jugador existente
+
+
+        }
     }
 }
+
+
+
+
+
+
 
 

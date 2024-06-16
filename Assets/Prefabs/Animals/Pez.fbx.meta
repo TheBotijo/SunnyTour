@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.001.L|Armature.001.LAction
+      name: Swim
       takeName: Armature.001.L|Armature.001.LAction
       internalID: -3117374331771267084
       firstFrame: 0

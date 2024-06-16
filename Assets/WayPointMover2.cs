@@ -8,15 +8,20 @@ public class WaypointMover2 : MonoBehaviour
     [SerializeField] private float rotationSpeed = 2f;
     [SerializeField] private float distanceThreshold = 0.1f;
 
-    [SerializeField] private float minWaitTime = 2f; // Tiempo mínimo de espera en segundos
-    [SerializeField] private float maxWaitTime = 5f; // Tiempo máximo de espera en segundos
+    [SerializeField] private float decisionInterval = 10f; // Intervalo fijo para decidir si se para o cambia de dirección
+    [SerializeField] private float minIdleTime = 2f; // Tiempo mínimo que se queda quieto
+    [SerializeField] private float maxIdleTime = 5f; // Tiempo máximo que se queda quieto
     [SerializeField] private float directionChangeProbability = 0.3f; // Probabilidad de cambiar de dirección
 
     private Transform currentWaypoint;
     private bool isWaiting = false;
+    private Animator animator;
 
     void Start()
     {
+        // Obtener el componente Animator
+        animator = GetComponent<Animator>();
+
         currentWaypoint = waypoints.GetNextWaypoint(null);
         if (currentWaypoint != null)
         {
@@ -47,6 +52,12 @@ public class WaypointMover2 : MonoBehaviour
         {
             currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
         }
+
+        // Activar la animación solo cuando se está moviendo
+        if (animator != null && !animator.GetBool("IsMoving"))
+        {
+            animator.SetBool("IsMoving", true);
+        }
     }
 
     // Método para suavizar la rotación hacia una posición objetivo
@@ -62,9 +73,8 @@ public class WaypointMover2 : MonoBehaviour
     {
         while (true)
         {
-            // Esperar un tiempo aleatorio entre minWaitTime y maxWaitTime
-            float waitTime = Random.Range(minWaitTime, maxWaitTime);
-            yield return new WaitForSeconds(waitTime);
+            // Esperar el intervalo fijo antes de tomar una decisión
+            yield return new WaitForSeconds(decisionInterval);
 
             // Decidir al azar si cambiar de dirección o quedarse quieto
             if (Random.value < directionChangeProbability)
@@ -74,11 +84,13 @@ public class WaypointMover2 : MonoBehaviour
             }
             else
             {
-                // Quedarse quieto por un tiempo aleatorio
-                float idleTime = Random.Range(minWaitTime, maxWaitTime);
+                // Quedarse quieto por un tiempo aleatorio entre minIdleTime y maxIdleTime
+                float idleTime = Random.Range(minIdleTime, maxIdleTime);
                 isWaiting = true;
+                SetAnimationState(false); // Detener la animación al quedar quieto
                 yield return new WaitForSeconds(idleTime);
                 isWaiting = false;
+                SetAnimationState(true); // Reanudar la animación cuando se mueva
             }
         }
     }
@@ -92,6 +104,19 @@ public class WaypointMover2 : MonoBehaviour
         // Asigna el siguiente waypoint en la nueva dirección
         currentWaypoint = waypoints.GetNextWaypoint(currentWaypoint);
     }
+
+    // Método para controlar el estado de la animación
+    private void SetAnimationState(bool isMoving)
+    {
+        if (animator != null)
+        {
+            animator.SetBool("IsMoving", isMoving);
+        }
+    }
 }
+
+
+
+
 
 
