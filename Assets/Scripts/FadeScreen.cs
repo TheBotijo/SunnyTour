@@ -6,7 +6,7 @@ public class FadeScreen : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     public bool fadeOnStart = true;
-    public float fadeDuration = 3;
+    public float fadeDuration = 2;
     public Color fadeColor;
     private Renderer rend;
     // Start is called before the first frame update
@@ -17,7 +17,6 @@ public class FadeScreen : MonoBehaviour
         if (fadeOnStart)
         {
             FadeIn();
-            StartCoroutine(DelayedAction());
         }
     }
 
@@ -25,9 +24,8 @@ public class FadeScreen : MonoBehaviour
     public void Fade(float alphaIn, float alphaOut)
     {
         meshRenderer.enabled = true;
-        StartCoroutine(FadeRoutine(alphaIn, alphaOut));
-        StartCoroutine(DelayedAction());
-        
+        StartCoroutine(FadeRoutine(alphaIn, alphaOut));       
+
     }
 
     public void FadeIn()
@@ -57,9 +55,5 @@ public class FadeScreen : MonoBehaviour
         newColor2.a = alphaOut;
         rend.material.SetColor("_Color", newColor2);
     }
-    IEnumerator DelayedAction()
-    {
-        yield return new WaitForSeconds(3f);
-        meshRenderer.enabled = false;
-    }
+    
 }

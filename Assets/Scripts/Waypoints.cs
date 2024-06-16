@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Waypoints : MonoBehaviour
 {
-
     [Range(0f, 2f)]
     [SerializeField] private float waypointSize = 1f;
+
+    private int direction = 1; // 1 para avanzar, -1 para retroceder
+
     private void OnDrawGizmos()
     {
-       
         foreach (Transform t in transform)
         {
             Gizmos.color = Color.blue;
@@ -27,18 +28,28 @@ public class Waypoints : MonoBehaviour
 
     public Transform GetNextWaypoint(Transform currentWaypoint)
     {
-        if(currentWaypoint == null)
+        if (currentWaypoint == null)
         {
             return transform.GetChild(0);
         }
 
-        if(currentWaypoint.GetSiblingIndex() < transform.childCount - 1)
+        int currentIndex = currentWaypoint.GetSiblingIndex();
+        int nextIndex = currentIndex + direction;
+
+        if (nextIndex >= transform.childCount || nextIndex < 0)
         {
-            return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
+            direction *= -1;
+            nextIndex = currentIndex + direction;
         }
-        else
-        {
-            return transform.GetChild(0); 
-        }
+
+        return transform.GetChild(nextIndex);
+    }
+
+    // Método para invertir la dirección
+    public void ReverseDirection()
+    {
+        direction *= -1;
     }
 }
+
+

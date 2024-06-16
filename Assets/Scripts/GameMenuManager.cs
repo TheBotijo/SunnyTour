@@ -1,6 +1,7 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameMenuManager : MonoBehaviour
 {
@@ -89,5 +90,6 @@ public class GameMenuManager : MonoBehaviour
             Debug.LogError("Jugador no encontrado en la escena.");
         }
     }
+    
 }
 
