@@ -11,9 +11,20 @@ public class ReloadScene : MonoBehaviour
     private TransitionManager transitionManager; // Referencia a TransitionManager
 
     // Referencia a la imagen de UI que mostrará el PNG
-    public Image exitImage;
+    public GameObject exitImage;
 
-    private void Start()
+    void OnEnable()
+    {
+        // Registrar el callback para ser llamado cuando se carga una escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // Desregistrar el callback cuando el script se deshabilita
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Buscar automáticamente el objeto con el tag "Player" al inicio
         Player = GameObject.FindWithTag("Player");
@@ -40,10 +51,17 @@ public class ReloadScene : MonoBehaviour
             return;
         }
 
+        exitImage = GameObject.FindWithTag("Exit");
+        if (exitImage == null)
+        {
+            Debug.LogError("No se encontró una imagen de tipo 'exitImage'. Asegúrate de que está presente en la escena.");
+            return;
+        }
+
         // Asegúrate de que la imagen de salida está inicialmente desactivada
         if (exitImage != null)
         {
-            exitImage.gameObject.SetActive(false);
+            exitImage.gameObject.GetComponentInChildren<Image>().enabled = false;
         }
         else
         {
@@ -65,7 +83,9 @@ public class ReloadScene : MonoBehaviour
         // Activar la imagen
         if (exitImage != null)
         {
-            exitImage.gameObject.SetActive(true);
+            exitImage.gameObject.GetComponentInChildren<Image>().enabled = true;
+            Debug.Log("No se asignó una imagen de salida. Por favor, asigna una en el Inspector.");
+
         }
 
         // Esperar 5 segundos

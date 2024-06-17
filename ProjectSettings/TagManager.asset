@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - AudioManager
   - Pospo
+  - Exit
   layers:
   - Default
   - TransparentFX
