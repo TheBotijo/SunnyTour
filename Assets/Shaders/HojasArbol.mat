@@ -122,8 +122,8 @@ Material:
     - _Color: {r: 0.33094516, g: 0.6320754, b: 0.34808263, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _WindDirection: {r: 0.44518685, g: 0.7087086, b: 0.24876916, a: 0}
-    - _WindOffset: {r: 0.55129683, g: -0.08147319, b: 0.26255363, a: 0}
+    - _WindDirection: {r: -0.08030761, g: -0.7029832, b: -0.21871583, a: 0}
+    - _WindOffset: {r: 0.823505, g: 0.17041057, b: 0.24531116, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8818660440632268501
 MonoBehaviour:
